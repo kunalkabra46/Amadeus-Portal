@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="description" content="Philippine Airlines portal page - book flights, manage your trip, check-in, and explore destinations.">
+    <title>Amadeus| Book, Manage & Check Flight Status</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header" role="banner">
+        <nav class="navbar" aria-label="Primary navigation">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <a href="/" aria-label="Amadeus home">
+                            <img src="images/airline-logo.svg" alt="Amadeus" class="logo-img">
+                        </a>
+                    </div>
+
+                    <div class="nav-links" id="primaryNav" role="navigation">
+                        <a href="#book" class="nav-link">Book</a>
+                        <a href="#destinations" class="nav-link">Explore</a>
+                        <a href="#manage" class="nav-link">Manage</a>
+                        <a href="#checkin" class="nav-link">Prepare</a>
+                        <a href="#miles" class="nav-link">Mabuhay Miles</a>
+                        <a href="#help" class="nav-link">Help</a>
+                    </div>
+
+                    <div class="nav-actions">
+                        <button class="btn-search" type="button" aria-label="Search">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="7"></circle>
+                                <line x1="16" y1="16" x2="22" y2="22"></line>
+                            </svg>
+                        </button>
+                        <button class="btn-language-selector" type="button" aria-haspopup="listbox" aria-expanded="false">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 010 20"></path>
+                                <path d="M12 2a15.3 15.3 0 000 20"></path>
+                            </svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="dropdown-arrow" aria-hidden="true">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <a href="#" class="link-login">Log in / Sign up</a>
+                        <button class="btn-menu" id="mobileMenuBtn" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle menu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section" id="book" aria-labelledby="heroTitle">
+            <div class="hero-background">
+                <picture>
+                    <source srcset="images/1440x440px_Pal-Web-Banner_PAL-YES-LUZON.jpg" type="image/jpeg">
+                    <img src="images/1440x440px_Pal-Web-Banner_PAL-YES-LUZON.jpg" alt="Philippine Airlines year end seat sale" class="hero-image" loading="eager" decoding="async">
+                </picture>
+                <div class="hero-overlay"></div>
+            </div>
+
+            <div class="container">
+                <div class="hero-content">
+                    <p class="eyebrow">#FlyAmadeus</p>
+                    <p class="hero-subtext">Get started on your best of 2026! Book until December 30 only.</p>
+                    <h1 id="heroTitle">YEAR END <span>SEAT SALE</span></h1>
+                    <button class="btn-hero">Book now</button>
+                </div>
+
+                <div class="booking-widget" aria-labelledby="bookingTitle">
+                    <div class="widget-header">
+                        <div class="booking-tabs" role="tablist" aria-label="Booking shortcuts">
+                            <button class="booking-tab active">Book a flight</button>
+                            <button class="booking-tab">Manage booking</button>
+                            <button class="booking-tab">Check-in</button>
+                            <button class="booking-tab">Flight status</button>
+                        </div>
+                        <div class="booking-toggle">
+                            <p>Sign in to book with miles</p>
+                            <label class="switch">
+                                <input type="checkbox" aria-label="Sign in to book with miles">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="trip-type-wrapper">
+                        <fieldset class="trip-type" role="radiogroup" aria-label="Trip type">
+                            <legend class="sr-only">Choose your trip type</legend>
+                            <label class="radio-label">
+                                <input type="radio" name="tripType" value="roundtrip">
+                                <span>Round trip</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="tripType" value="oneway" checked>
+                                <span>One way</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="tripType" value="multicity">
+                                <span>Multi city</span>
+                            </label>
+                        </fieldset>
+                    </div>
+
+                    <form class="booking-form" aria-describedby="bookingFeedback" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="from">Departure</label>
+                                <div class="input-icon field-with-suggestions">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                                        <path d="M2 12l10 5 10-5" />
+                                        <path d="M2 7l10 5 10-5" />
+                                    </svg>
+                                    <input type="text" id="from" name="from" value="Brussels-BRU" aria-autocomplete="list" aria-expanded="false" aria-controls="from-list" autocomplete="off" inputmode="text" required>
+                                    <div class="suggestions-panel" id="from-list" role="listbox" aria-label="Departure airport suggestions"></div>
+                                </div>
+                            </div>
+
+                            <button type="button" class="swap-btn" aria-label="Swap destinations">
+                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                    <path d="M6.99 11L3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z"/>
+                                </svg>
+                            </button>
+
+                            <div class="form-group">
+                                <label for="to">Destination</label>
+                                <div class="input-icon field-with-suggestions">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                    <input type="text" id="to" name="to" value="Frankfurt-FRA" aria-autocomplete="list" aria-expanded="false" aria-controls="to-list" autocomplete="off" inputmode="text" required>
+                                    <div class="suggestions-panel" id="to-list" role="listbox" aria-label="Destination airport suggestions"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="departDate">Departure date</label>
+                                <div class="input-icon date-picker-wrapper">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                        <line x1="16" y1="2" x2="16" y2="6"/>
+                                        <line x1="8" y1="2" x2="8" y2="6"/>
+                                        <line x1="3" y1="10" x2="21" y2="10"/>
+                                    </svg>
+                                    <input type="text" id="departDate" name="departDate" value="26-Nov-2025" readonly required autocomplete="off">
+                                    <div class="calendar-picker" id="departCalendar"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="returnGroup">
+                                <label for="returnDate">Return date</label>
+                                <div class="input-icon date-picker-wrapper">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                        <line x1="16" y1="2" x2="16" y2="6"/>
+                                        <line x1="8" y1="2" x2="8" y2="6"/>
+                                        <line x1="3" y1="10" x2="21" y2="10"/>
+                                    </svg>
+                                    <input type="text" id="returnDate" name="returnDate" value="02-Dec-2025" readonly autocomplete="off">
+                                    <div class="calendar-picker" id="returnCalendar"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group pax-cabin-group">
+                                <label for="paxCabin">Pax and Cabin</label>
+                                <div class="pax-cabin-selectors">
+                                    <div class="input-icon">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="12" cy="7" r="4"/>
+                                        </svg>
+                                        <select id="paxCount" name="paxCount" required>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-icon">
+                                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                        </svg>
+                                        <select id="cabinClass" name="cabinClass" required>
+                                            <option value="economy">Economy</option>
+                                            <option value="business">Business</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <a href="#" class="link-promo">Add promo code</a>
+                            <button type="submit" class="btn-primary">Search flights</button>
+                        </div>
+
+                        <p id="bookingFeedback" class="form-feedback" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="promo-section" id="offers">
+            <div class="container">
+                <div class="promo-grid">
+                    <article class="promo-card">
+                        <picture>
+                            <source srcset="images/promo-offers.webp" type="image/webp">
+                            <img src="images/promo-offers.jpg" alt="Limited time fares" loading="lazy" decoding="async">
+                        </picture>
+                        <div class="promo-content">
+                            <h3>Seasonal seat sale</h3>
+                            <p>Save up to 30% on select international routes through December 15.</p>
+                            <a href="#" class="link-arrow">View fares</a>
+                        </div>
+                    </article>
+                    <article class="promo-card">
+                        <picture>
+                            <source srcset="images/promo-miles.webp" type="image/webp">
+                            <img src="images/promo-miles.jpg" alt="Mabuhay Miles rewards" loading="lazy" decoding="async">
+                        </picture>
+                        <div class="promo-content">
+                            <h3>Mabuhay Miles</h3>
+                            <p>Earn and redeem faster with exclusive partner offers and tier bonuses.</p>
+                            <a href="#" class="link-arrow">Join Mabuhay Miles</a>
+                        </div>
+                    </article>
+                    <article class="promo-card">
+                        <picture>
+                            <source srcset="images/promo-travel.webp" type="image/webp">
+                            <img src="images/promo-travel.jpg" alt="Travel advisories" loading="lazy" decoding="async">
+                        </picture>
+                        <div class="promo-content">
+                            <h3>Travel updates</h3>
+                            <p>Stay informed on entry requirements, health protocols, and airport notices.</p>
+                            <a href="#" class="link-arrow">Check advisories</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="checkin-section" id="checkin">
+            <div class="container">
+                <div class="section-header align-left">
+                    <p class="eyebrow">Check-in</p>
+                    <h2>Skip the queues with digital check-in</h2>
+                    <p>Open 24 hours before departure for all eligible flights.</p>
+                </div>
+                <div class="checkin-grid">
+                    <article class="checkin-card">
+                        <h3>1. Confirm traveler details</h3>
+                        <p>Have your booking reference or Mabuhay Miles number ready.</p>
+                    </article>
+                    <article class="checkin-card">
+                        <h3>2. Select seats & add-ons</h3>
+                        <p>Choose preferred seats, add meals, or purchase extra baggage.</p>
+                    </article>
+                    <article class="checkin-card">
+                        <h3>3. Download boarding pass</h3>
+                        <p>Receive mobile and printable passes instantly with QR codes.</p>
+                    </article>
+                </div>
+                <div class="checkin-cta">
+                    <button class="btn-primary">Start Web Check-in</button>
+                    <button class="btn-secondary">View requirements</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="status-section" id="status">
+            <div class="container">
+                <div class="status-grid">
+                    <div class="status-content">
+                        <p class="eyebrow">Flight status</p>
+                        <h2>Track every flight in real time</h2>
+                        <p>Receive push and email alerts when you subscribe to notifications.</p>
+                    </div>
+                    <form class="status-form" aria-label="Flight status lookup">
+                        <div class="form-group">
+                            <label for="statusFlightNumber">Flight number</label>
+                            <input type="text" id="statusFlightNumber" name="statusFlightNumber" placeholder="e.g., PR 102" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="statusDate">Departure date</label>
+                            <input type="date" id="statusDate" name="statusDate" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Check status</button>
+                        <p class="form-feedback" id="statusFeedback" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="destinations-section" id="destinations">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow">Featured destinations</p>
+                    <h2>Explore our network</h2>
+                    <p>Discover top routes with introductory fares and signature PAL service.</p>
+                </div>
+                <div class="destinations-grid">
+                    <article class="destination-card">
+                        <picture>
+                            <source srcset="images/dest-tokyo.webp" type="image/webp">
+                            <img src="images/dest-tokyo.jpg" alt="Tokyo skyline" loading="lazy" decoding="async">
+                        </picture>
+                        <div class="destination-info">
+                            <h3>Tokyo</h3>
+                            <p class="price">From ₱18,000</p>
+                            <button class="btn-book" data-city="Tokyo">Book now</button>
+                        </div>
+                    </article>
+                    <article class="destination-card">
+                        <picture>
+                            <source srcset="images/dest-singapore.webp" type="image/webp">
+                            <img src="images/dest-singapore.jpg" alt="Singapore skyline" loading="lazy" decoding="async">
+                        </picture>
+                        <div class="destination-info">
+                            <h3>Singapore</h3>
+                            <p class="price">From ₱12,500</p>
+                            <button class="btn-book" data-city="Singapore">Book now</button>
+                        </div>
+                    </article>
+                    <article class="destination-card">
+                        <picture>
+                            <source srcset="images/dest-sydney.webp" type="image/webp">
+                            <img src="images/dest-sydney.jpg" alt="Sydney Opera House" loading="lazy" decoding="async">
+                        </picture>
+                        <div class="destination-info">
+                            <h3>Sydney</h3>
+                            <p class="price">From ₱25,000</p>
+                            <button class="btn-book" data-city="Sydney">Book now</button>
+                        </div>
+                    </article>
+                    <article class="destination-card">
+                        <picture>
+                            <source srcset="images/dest-sf.webp" type="image/webp">
+                            <img src="images/dest-sf.jpg" alt="Golden Gate Bridge" loading="lazy" decoding="async">
+                        </picture>
+                        <div class="destination-info">
+                            <h3>San Francisco</h3>
+                            <p class="price">From ₱35,000</p>
+                            <button class="btn-book" data-city="San Francisco">Book now</button>
+                        </div>
+                    </article>
+                    <article class="destination-card">
+                        <picture>
+                            <source srcset="images/dest-dubai.webp" type="image/webp">
+                            <img src="images/dest-dubai.jpg" alt="Dubai skyline" loading="lazy" decoding="async">
+                        </picture>
+                        <div class="destination-info">
+                            <h3>Dubai</h3>
+                            <p class="price">From ₱28,000</p>
+                            <button class="btn-book" data-city="Dubai">Book now</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-section" id="experience">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow">Experience PAL</p>
+                    <h2>Why travelers choose us</h2>
+                    <p>Premium inflight service and heartfelt hospitality on every journey.</p>
+                </div>
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <h3>24/7 support</h3>
+                        <p>Global contact centers with multilingual agents.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                            </svg>
+                        </div>
+                        <h3>Mobile check-in</h3>
+                        <p>Digital boarding passes for you and your companions.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </div>
+                        <h3>Baggage tracking</h3>
+                        <p>Monitor bags from drop-off to carousel using the PAL app.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <h3>Flight alerts</h3>
+                        <p>Instant notifications for gate changes, delays, or cancellations.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button class="feedback-btn" type="button" aria-label="Feedback">
+        Feedback
+    </button>
+
+    <button class="chat-launcher" type="button" aria-label="Chat with us">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8.5 8.5z"/>
+        </svg>
+        Chat with us!
+    </button>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>About PAL</h4>
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press room</a></li>
+                        <li><a href="#">Corporate responsibility</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Travel information</h4>
+                    <ul>
+                        <li><a href="#">Travel advisory</a></li>
+                        <li><a href="#">Baggage</a></li>
+                        <li><a href="#">Visa requirements</a></li>
+                        <li><a href="#">Airport information</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Customer support</h4>
+                    <ul>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Feedback</a></li>
+                        <li><a href="#">Lost &amp; found</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column" id="miles">
+                    <h4>Mabuhay Miles</h4>
+                    <ul>
+                        <li><a href="#">Join now</a></li>
+                        <li><a href="#">Benefits</a></li>
+                        <li><a href="#">Earn miles</a></li>
+                        <li><a href="#">Redeem miles</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column" id="help">
+                    <h4>Follow us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.517c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="X / Twitter">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M23.954 4.569c-.885.392-1.83.656-2.825.775A4.932 4.932 0 0 0 23.337 3c-.951.564-2.005.974-3.127 1.195a4.916 4.916 0 0 0-8.384 4.482A13.94 13.94 0 0 1 1.671 3.149a4.916 4.916 0 0 0 1.523 6.573 4.903 4.903 0 0 1-2.229-.616v.06a4.919 4.919 0 0 0 3.946 4.827 4.996 4.996 0 0 1-2.224.085 4.936 4.936 0 0 0 4.604 3.417A9.868 9.868 0 0 1 0 19.54a13.94 13.94 0 0 0 7.548 2.212c9.057 0 14.009-7.513 14.009-14.01 0-.213-.006-.425-.017-.636A9.935 9.935 0 0 0 24 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M12 0C8.74 0 8.333.012 7.053.07 5.775.128 4.905.328 4.14.624c-.789.306-1.459.717-2.126 1.384A5.19 5.19 0 0 0 .63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.012 3.667.07 4.947c.059 1.277.26 2.147.558 2.912.306.788.717 1.459 1.384 2.126a5.19 5.19 0 0 0 2.126 1.384c.765.296 1.635.498 2.913.557 1.28.059 1.687.074 4.949.074s3.667-.015 4.947-.074c1.277-.059 2.147-.261 2.912-.557a5.195 5.195 0 0 0 2.126-1.384c.667-.667 1.078-1.338 1.384-2.126.296-.765.498-1.635.557-2.912.059-1.28.074-1.687.074-4.947s-.015-3.667-.074-4.947c-.059-1.277-.261-2.148-.557-2.913A5.195 5.195 0 0 0 21.914.624c-.765-.296-1.635-.498-2.912-.557C17.722.012 17.315 0 14.053 0h-2.106zM12 5.838A6.162 6.162 0 1 1 5.838 12 6.154 6.154 0 0 1 12 5.838zm7.2-2.778a1.44 1.44 0 1 1-1.44 1.44 1.44 1.44 0 0 1 1.44-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="locale-selector">
+                    <label for="countrySelect">Country</label>
+                    <select id="countrySelect" name="countrySelect">
+                        <option value="ph">Philippines (PH)</option>
+                        <option value="us">United States (EN)</option>
+                        <option value="jp">Japan (日本語)</option>
+                    </select>
+                    <label for="languageSelect">Language</label>
+                    <select id="languageSelect" name="languageSelect">
+                        <option value="en">English</option>
+                        <option value="tl">Filipino</option>
+                        <option value="jp">日本語</option>
+                    </select>
+                </div>
+                <p>&copy; 2024 Philippine Airlines. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Cookie policy</a>
+                    <a href="#">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

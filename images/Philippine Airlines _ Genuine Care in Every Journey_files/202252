@@ -1,0 +1,20 @@
+
+(function () {
+    var scr = document.createElement('script');
+    var snippet = "var i = document.createElement('img');\
+    i.setAttribute('alt', '');\
+    i.setAttribute('height', '1');\
+    i.setAttribute('width', '1');\
+    i.setAttribute('style', 'display: none;');\
+    i.setAttribute('src', 'https://ad.doubleclick.net/ddm/activity/src=9319396;type=sales;cat=apacp000;qty=1;cost=0;u1=;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;npa=;ord=UNKNOWN');\
+    document.body.appendChild(i);";
+
+    scr.type = 'text/javascript';
+    scr.async = true;
+    if (scr.textContent) {
+        scr.textContent = snippet;
+    } else {
+        scr.text = snippet;
+    }
+    document.getElementsByTagName('head')[0].appendChild(scr);
+})();
