@@ -76,6 +76,8 @@ bookingTabs.forEach(tab => {
 // ===================================
 const tripTypeRadios = document.querySelectorAll('input[name="tripType"]');
 const returnDateGroup = document.getElementById('returnGroup');
+const departDateInput = document.getElementById('departDate');
+const returnDateInput = document.getElementById('returnDate');
 
 function updateReturnDateField() {
     if (!returnDateGroup) return;
@@ -86,9 +88,7 @@ function updateReturnDateField() {
     returnDateGroup.style.opacity = isOneWay ? '0.5' : '1';
     if (input) {
         input.disabled = isOneWay;
-        if (isOneWay) {
-            input.value = '';
-        }
+        input.setAttribute('aria-disabled', String(isOneWay));
     }
 }
 
@@ -246,6 +246,28 @@ function parseDate(dateString) {
 // Store calendar instances
 const calendarInstances = {};
 
+function getTodayAtMidnight() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return today;
+}
+
+function initializeDateDefaults() {
+    const today = getTodayAtMidnight();
+    
+    if (departDateInput) {
+        departDateInput.value = formatDate(today);
+    }
+    
+    if (returnDateInput) {
+        const defaultReturn = new Date(today);
+        defaultReturn.setDate(defaultReturn.getDate() + 7);
+        returnDateInput.value = formatDate(defaultReturn);
+    }
+    
+    return today;
+}
+
 function createCalendar(containerId, inputId, minDate = null) {
     const container = document.getElementById(containerId);
     const input = document.getElementById(inputId);
@@ -360,8 +382,8 @@ function createCalendar(containerId, inputId, minDate = null) {
                 container.classList.remove('active');
                 
                 // If this is departure date, update return date min
-                if (inputId === 'departDate') {
-                    const returnInput = document.getElementById('returnDate');
+        if (inputId === 'departDate') {
+            const returnInput = document.getElementById('returnDate');
                     const returnCalendar = document.getElementById('returnCalendar');
                     if (returnInput && returnCalendar && calendarInstances['returnCalendar']) {
                         // Update min date
@@ -434,24 +456,20 @@ function createCalendar(containerId, inputId, minDate = null) {
     renderCalendar();
 }
 
-// Initialize calendars
-createCalendar('departCalendar', 'departDate');
+// Initialize calendars with dynamic defaults
+const todayMinDate = initializeDateDefaults();
+createCalendar('departCalendar', 'departDate', todayMinDate);
 
 // Initialize return calendar - check if departure date is set
-const departInput = document.getElementById('departDate');
 let returnMinDate = null;
-if (departInput && departInput.value) {
+if (departDateInput && departDateInput.value) {
     try {
-        returnMinDate = parseDate(departInput.value);
+        returnMinDate = parseDate(departDateInput.value);
     } catch (e) {
-        // Use today as min if parsing fails
-        returnMinDate = new Date();
-        returnMinDate.setHours(0, 0, 0, 0);
+        returnMinDate = new Date(todayMinDate);
     }
 } else {
-    // Use today as minimum
-    returnMinDate = new Date();
-    returnMinDate.setHours(0, 0, 0, 0);
+    returnMinDate = new Date(todayMinDate);
 }
 
 createCalendar('returnCalendar', 'returnDate', returnMinDate);
